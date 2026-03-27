@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OsintX - Premium Plans</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Particles Background */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(var(--drift)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .particle.small {
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+        }
+
+        .particle.medium {
+            width: 5px;
+            height: 5px;
+            background: rgba(200, 200, 200, 0.5);
+            box-shadow: 0 0 8px rgba(200, 200, 200, 0.4);
+        }
+
+        .particle.large {
+            width: 7px;
+            height: 7px;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .particle.grey {
+            background: rgba(150, 150, 150, 0.4);
+            box-shadow: 0 0 8px rgba(150, 150, 150, 0.3);
+        }
+
+        /* Gradient Blobs */
+        .bg-gradient {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .gradient-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+            top: -300px;
+            left: -300px;
+        }
+
+        .gradient-2 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            top: 50%;
+            right: -250px;
+        }
+
+        .gradient-3 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 70%);
+            bottom: -200px;
+            left: 20%;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: white;
+            color: black;
+            padding: 11px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+
+        /* Pricing Cards */
+        .pricing-section {
+            padding: 80px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 48px 40px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ffffff, #888888);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .pricing-card:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(255,255,255,0.15);
+        }
+
+        .pricing-card:hover::before {
+            opacity: 1;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.04) 100%);
+            border: 2px solid rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            opacity: 1;
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .plan-price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+            color: #888;
+            font-weight: 500;
+        }
+
+        .plan-period {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .plan-features i {
+            color: #fff;
+            font-size: 1rem;
+            width: 20px;
+        }
+
+        .plan-cta {
+            width: 100%;
+            padding: 16px 32px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .plan-cta:hover {
+            background: #ffffff;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .pricing-card.featured .plan-cta {
+            background: #ffffff;
+            color: #000;
+        }
+
+        .pricing-card.featured .plan-cta:hover {
+            background: #f0f0f0;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: #ffffff;
+            color: #000;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item.active {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .faq-question {
+            padding: 24px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            color: #fff;
+        }
+
+        .faq-answer {
+            padding: 0 32px 24px 32px;
+            color: #888;
+            display: none;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Payment Methods Section */
+        .payment-footer {
+            background: rgba(10, 10, 10, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 48px 0;
+            margin-top: 120px;
+            text-align: center;
+        }
+
+        .payment-title {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+
+        .payment-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .payment-logo {
+            height: 32px;
+            width: auto;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            filter: grayscale(20%);
+        }
+
+        .payment-logo:hover {
+            opacity: 1;
+            transform: translateY(-4px);
+            filter: grayscale(0%) brightness(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 60px 0 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-copyright {
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .plan-price {
+                font-size: 2.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .payment-logos {
+                gap: 24px;
+            }
+
+            .payment-logo {
+                height: 24px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a1a;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Particles -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Gradient Blobs -->
+    <div class="bg-gradient gradient-1"></div>
+    <div class="bg-gradient gradient-2"></div>
+    <div class="bg-gradient gradient-3"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.php" class="logo">
+                    <img src="../images/732374ad-e8c2-4b4e-9af8-eb8364b297ae-removebg-preview.png" alt="OsintX">
+                    <span class="logo-text">OsintX</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+                <a href="../pages/login.html" class="btn-primary">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">
+                <i class="fas fa-star"></i>
+                <span>Choose Your Plan</span>
+            </div>
+            <h1>Simple, Transparent<br>Pricing</h1>
+            <p>Access comprehensive OSINT intelligence with flexible plans designed for professionals. No hidden fees, cancel anytime.</p>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="pricing-grid">
+                <!-- Premium Plan -->
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <div class="plan-name">Premium</div>
+                        <div class="plan-price">€3,99<span>/mo</span></div>
+                        <div class="plan-period">Billed monthly</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            70 searches per day
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            Basic search access
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            All data sources included
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            Priority support
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            All future updates
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            Custom Role
+                        </li>
+                    </ul>
+                    <a href="https://dsc.gg/osintx" class="plan-cta">Get Started</a>
+                </div>
+
+                <!-- Premium Advanced Plan (Featured) -->
+                <div class="pricing-card featured">
+                    <span class="popular-badge">Most Popular</span>
+                    <div class="plan-header">
+                        <div class="plan-name">Premium Advanced</div>
+                        <div class="plan-price">€9,99<span>/mo</span></div>
+                        <div class="plan-period">Billed monthly</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            500 searches per day
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            Advanced search features
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            All data sources included
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            24/7 priority support
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            All future updates
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            Custom Role
+                        </li>
+                    </ul>
+                    <a href="https://dsc.gg/osintx" class="plan-cta">Get Started</a>
+                </div>
+
+                <!-- Lifetime Plan -->
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <div class="plan-name">Lifetime</div>
+                        <div class="plan-price">29,99€</div>
+                        <div class="plan-period">One-time payment</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li>
+                            <i class="fas fa-check"></i>
+                            Unlimited searches
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            Advanced search features
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            All data sources included
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            Lifetime priority support
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            All future updates forever
+                        </li>
+                        <li>
+                            <i class="fas fa-check"></i>
+                            Custom Role
+                        </li>
+                    </ul>
+                    <a href="https://dsc.gg/osintx" class="plan-cta">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What payment methods do you accept?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    We accept PayPal, credit cards (Visa, Mastercard), and various cryptocurrencies including Bitcoin, Ethereum, Litecoin, and Solana.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I upgrade or downgrade my plan?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate the difference.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is there a free trial available?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Contact us on Discord for a demo or trial access. We're happy to show you the platform before you commit.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What's included in "all data sources"?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    You get access to 42+ intelligence sources including LeakCheck, Snusbase, BreachBase, IntelVault, and many more premium databases.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How does the lifetime plan work?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Pay once, use forever. The lifetime plan gives you unlimited searches and all future updates with no recurring fees. Best value for long-term users.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods Footer -->
+    <div class="payment-footer">
+        <div class="container">
+            <div class="payment-title">Accepted Payment Methods</div>
+            <div class="payment-logos">
+                <!-- PayPal -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="payment-logo" style="height: 20px;">
+                
+                <!-- Visa -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="payment-logo" style="height: 18px;">
+                
+                <!-- Mastercard -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="payment-logo" style="height: 26px;">
+                
+                <!-- Bitcoin -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" class="payment-logo" style="height: 26px;">
+                
+                <!-- Ethereum -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Ethereum_logo_2014.svg" alt="Ethereum" class="payment-logo" style="height: 26px;">
+                
+                <!-- Litecoin -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/LTC-400.png" alt="Litecoin" class="payment-logo" style="height: 26px;">
+                
+                <!-- Solana -->
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png" alt="Solana" class="payment-logo" style="height: 26px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="../index.php">Home</a>
+                <a href="../pages/privacy.html">Privacy</a>
+                <a href="../pages/tos.html">Terms</a>
+                <a href="../pages/contact.html">Contact</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 OsintX.it - All rights reserved
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const sizes = ['small', 'medium', 'large'];
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                particle.classList.add(size);
+                
+                if (Math.random() > 0.5) {
+                    particle.classList.add('grey');
+                }
+                
+                particle.style.left = Math.random() * 100 + '%';
+                const duration = 15 + Math.random() * 25;
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                
+                const drift = (Math.random() - 0.5) * 200;
+                particle.style.setProperty('--drift', drift + 'px');
+                
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
