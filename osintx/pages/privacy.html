@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - OsintX.it</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Particles Background */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(var(--drift)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .particle.small {
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+        }
+
+        .particle.medium {
+            width: 5px;
+            height: 5px;
+            background: rgba(200, 200, 200, 0.5);
+            box-shadow: 0 0 8px rgba(200, 200, 200, 0.4);
+        }
+
+        .particle.large {
+            width: 7px;
+            height: 7px;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .particle.grey {
+            background: rgba(150, 150, 150, 0.4);
+            box-shadow: 0 0 8px rgba(150, 150, 150, 0.3);
+        }
+
+        /* Gradient Blobs */
+        .bg-gradient {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .gradient-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+            top: -300px;
+            left: -300px;
+        }
+
+        .gradient-2 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            top: 50%;
+            right: -250px;
+        }
+
+        .gradient-3 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 70%);
+            bottom: -200px;
+            left: 20%;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: white;
+            color: black;
+            padding: 11px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+
+        /* Privacy Content Section */
+        .privacy-section {
+            padding: 80px 0;
+        }
+
+        .privacy-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .privacy-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 48px 40px;
+            margin-bottom: 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .privacy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ffffff, #888888);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .privacy-card:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(255,255,255,0.15);
+        }
+
+        .privacy-card:hover::before {
+            opacity: 1;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: #fff;
+        }
+
+        .privacy-card h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .privacy-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .privacy-card p {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .privacy-card p strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .privacy-card ul {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .privacy-card li {
+            margin-bottom: 12px;
+            padding-left: 8px;
+        }
+
+        .privacy-card a {
+            color: #60a5fa;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        .privacy-card a:hover {
+            color: #93c5fd;
+        }
+
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .highlight-box p {
+            color: #60a5fa;
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 60px 0 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-copyright {
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .privacy-card {
+                padding: 32px 24px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a1a;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Particles -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Gradient Blobs -->
+    <div class="bg-gradient gradient-1"></div>
+    <div class="bg-gradient gradient-2"></div>
+    <div class="bg-gradient gradient-3"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.php" class="logo">
+                    <img src="../images/732374ad-e8c2-4b4e-9af8-eb8364b297ae-removebg-preview.png" alt="OsintX">
+                    <span class="logo-text">OsintX</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                </ul>
+                <a href="../pages/shop.html" class="btn-primary">
+                    <i class="fas fa-external-link-alt"></i>
+                    Purchase
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>Your Privacy Matters</span>
+            </div>
+            <h1>Privacy Policy</h1>
+            <p>Last updated: November 2025. Learn how we protect your privacy and handle your data responsibly.</p>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
+    <section class="privacy-section">
+        <div class="container">
+            <div class="privacy-content">
+
+                <!-- Overview -->
+                <div class="privacy-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-info-circle"></i></div>
+                        <h2>Overview</h2>
+                    </div>
+                    <p>
+                        At OsintX, your privacy is our top priority. We only collect the minimal data necessary to operate our OSINT platform safely and efficiently. We do <strong>not</strong> store or share any leak data, and we ensure transparency and security in all our processes.
+                    </p>
+                </div>
+
+                <!-- Information We Collect -->
+                <div class="privacy-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-database"></i></div>
+                        <h2>Information We Collect</h2>
+                    </div>
+                    <p>We only collect the information needed to manage accounts and subscriptions:</p>
+                    <ul>
+                        <li>Discord Username</li>
+                        <li>Discord User ID</li>
+                        <li>API Key</li>
+                        <li>Subscription Dates</li>
+                    </ul>
+                    <p>No other personal information is collected. We do not store any data from OSINT services.</p>
+                </div>
+
+                <!-- How We Use Your Information -->
+                <div class="privacy-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-lock"></i></div>
+                        <h2>How We Use Your Information</h2>
+                    </div>
+                    <p>The limited information we collect is used only for:</p>
+                    <ul>
+                        <li>Authenticating your API access</li>
+                        <li>Managing your subscription plan</li>
+                    </ul>
+                    <p>We do <strong>not</strong> sell, rent, or share your information with third parties for marketing purposes.</p>
+                </div>
+
+                <!-- Data Security -->
+                <div class="privacy-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-user-shield"></i></div>
+                        <h2>Data Security</h2>
+                    </div>
+                    <p>We implement industry-standard security measures to protect your data:</p>
+                    <ul>
+                        <li>End-to-end encryption for all API communications</li>
+                        <li>Secure authentication using modern protocols</li>
+                        <li>Access limited on a need-to-know basis</li>
+                        <li>Regular security audits and updates</li>
+                    </ul>
+                </div>
+
+                <!-- Subscription & Refund Policy -->
+                <div class="privacy-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-balance-scale"></i></div>
+                        <h2>Subscription & Refund Policy</h2>
+                    </div>
+                    <p>OsintX does <strong>not</strong> offer refunds. Users may:</p>
+                    <ul>
+                        <li>Upgrade their plan</li>
+                        <li>Downgrade their plan</li>
+                    </ul>
+                    <p>No other financial adjustments or reimbursements are provided.</p>
+                </div>
+
+                <!-- Cookies & Tracking -->
+                <div class="privacy-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-cookie-bite"></i></div>
+                        <h2>Cookies & Tracking</h2>
+                    </div>
+                    <p>We use minimal cookies only to ensure platform functionality and user sessions. No tracking for marketing purposes is performed.</p>
+                </div>
+
+                <!-- Third-Party OSINT APIs -->
+                <div class="privacy-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-server"></i></div>
+                        <h2>Third-Party OSINT APIs</h2>
+                    </div>
+                    <p>OsintX connects to external OSINT services to provide results. We do <strong>not</strong> store any data returned by these APIs. Your server only contains your account and subscription information.</p>
+                </div>
+
+                <!-- Disclaimer / Limitation of Liability -->
+                <div class="privacy-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <h2>Disclaimer / Limitation of Liability</h2>
+                    </div>
+                    <p>
+                        OsintX provides OSINT tools and data for informational purposes only. We are <strong>not responsible</strong> for any actions, decisions, or consequences resulting from the use of our platform. Users are solely responsible for how they use the information obtained from OsintX.
+                    </p>
+                    <p>
+                        OsintX's services are intended for legal and ethical purposes only. Any misuse, illegal activity, or violation of laws is the sole responsibility of the user. By using OsintX, you acknowledge and accept that OsintX holds no liability for your actions.
+                    </p>
+                </div>
+
+                <!-- User Rights -->
+                <div class="privacy-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-user"></i></div>
+                        <h2>User Rights</h2>
+                    </div>
+                    <p>You have the right to access, correct, or delete your personal data. To exercise these rights, contact us using the methods below.</p>
+                </div>
+
+                <!-- Contact -->
+                <div class="privacy-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-envelope"></i></div>
+                        <h2>Contact Us</h2>
+                    </div>
+                    <p>If you have any questions or concerns regarding this Privacy Policy or your data, please contact us:</p>
+                    <ul>
+                        <li>Discord: Join our server at <a href="https://discord.gg/OsintX">discord.gg/OsintX</a></li>
+                        <li>Contact Form: Available on our website</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="../index.php">Home</a>
+                <a href="../pages/privacy.html">Privacy</a>
+                <a href="../pages/tos.html">Terms</a>
+                <a href="../pages/contact.html">Contact</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 OsintX.it - All rights reserved
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const sizes = ['small', 'medium', 'large'];
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                particle.classList.add(size);
+                
+                if (Math.random() > 0.5) {
+                    particle.classList.add('grey');
+                }
+                
+                particle.style.left = Math.random() * 100 + '%';
+                const duration = 15 + Math.random() * 25;
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                
+                const drift = (Math.random() - 0.5) * 200;
+                particle.style.setProperty('--drift', drift + 'px');
+                
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+    </script>
+</body>
+</html>

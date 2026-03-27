@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updates & Changelog - OsintX.it</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Particles Background */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(var(--drift)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .particle.small {
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+        }
+
+        .particle.medium {
+            width: 5px;
+            height: 5px;
+            background: rgba(200, 200, 200, 0.5);
+            box-shadow: 0 0 8px rgba(200, 200, 200, 0.4);
+        }
+
+        .particle.large {
+            width: 7px;
+            height: 7px;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .particle.grey {
+            background: rgba(150, 150, 150, 0.4);
+            box-shadow: 0 0 8px rgba(150, 150, 150, 0.3);
+        }
+
+        /* Gradient Blobs */
+        .bg-gradient {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .gradient-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+            top: -300px;
+            left: -300px;
+        }
+
+        .gradient-2 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            top: 50%;
+            right: -250px;
+        }
+
+        .gradient-3 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 70%);
+            bottom: -200px;
+            left: 20%;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: white;
+            color: black;
+            padding: 11px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+
+        /* Empty State Section */
+        .empty-state {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .empty-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 32px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #888;
+        }
+
+        .empty-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .empty-desc {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .empty-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .empty-cta:hover {
+            background: #ffffff;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        /* Subscribe Section */
+        .subscribe-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 64px 48px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 120px;
+        }
+
+        .subscribe-section h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .subscribe-section p {
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 12px;
+            max-width: 550px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .subscribe-input {
+            flex: 1;
+            min-width: 280px;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .subscribe-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .subscribe-input::placeholder {
+            color: #666;
+        }
+
+        .subscribe-btn {
+            padding: 16px 40px;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .subscribe-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 60px 0 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-copyright {
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .subscribe-section {
+                padding: 48px 32px;
+            }
+
+            .empty-state {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+            }
+
+            .subscribe-input {
+                min-width: 100%;
+            }
+
+            .subscribe-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a1a;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Particles -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Gradient Blobs -->
+    <div class="bg-gradient gradient-1"></div>
+    <div class="bg-gradient gradient-2"></div>
+    <div class="bg-gradient gradient-3"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.php" class="logo">
+                    <img src="../images/732374ad-e8c2-4b4e-9af8-eb8364b297ae-removebg-preview.png" alt="OsintX">
+                    <span class="logo-text">OsintX</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                </ul>
+                <a href="../pages/shop.html" class="btn-primary">
+                    <i class="fas fa-external-link-alt"></i>
+                    Purchase
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">
+                <div class="pulse-dot"></div>
+                <span>Always Evolving</span>
+            </div>
+            <h1>Updates & Changelog</h1>
+            <p>Stay informed about the latest features, improvements, and fixes. We're constantly enhancing OsintX to provide you with the best OSINT intelligence platform.</p>
+        </div>
+    </section>
+
+    <!-- Empty State -->
+    <section class="empty-state">
+        <div class="container">
+            <div class="empty-icon">
+                <i class="fas fa-history"></i>
+            </div>
+            <h2 class="empty-title">No Updates Yet</h2>
+            <p class="empty-desc">
+                We're working on exciting new features and improvements. Check back soon for the latest updates and changelog entries.
+            </p>
+            <a href="../index.php" class="empty-cta">
+                <i class="fas fa-home"></i>
+                Back to Home
+            </a>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to get notified about new features, improvements, and important updates delivered straight to your inbox.</p>
+            <form class="subscribe-form" id="subscribeForm">
+                <input 
+                    type="email" 
+                    class="subscribe-input" 
+                    placeholder="Enter your email address" 
+                    required
+                >
+                <button type="submit" class="subscribe-btn">
+                    Subscribe <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="../index.php">Home</a>
+                <a href="../pages/privacy.html">Privacy</a>
+                <a href="../pages/tos.html">Terms</a>
+                <a href="../pages/contact.html">Contact</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 OsintX.it - All rights reserved
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const sizes = ['small', 'medium', 'large'];
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                particle.classList.add(size);
+                
+                if (Math.random() > 0.5) {
+                    particle.classList.add('grey');
+                }
+                
+                particle.style.left = Math.random() * 100 + '%';
+                const duration = 15 + Math.random() * 25;
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                
+                const drift = (Math.random() - 0.5) * 200;
+                particle.style.setProperty('--drift', drift + 'px');
+                
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Subscribe form handler
+        document.getElementById('subscribeForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = e.target.querySelector('.subscribe-input');
+            const btn = e.target.querySelector('.subscribe-btn');
+
+            btn.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+            btn.style.background = '#22c55e';
+
+            setTimeout(() => {
+                btn.innerHTML = 'Subscribe <i class="fas fa-paper-plane"></i>';
+                btn.style.background = 'white';
+                input.value = '';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - OsintX.it</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Particles Background */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(var(--drift)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .particle.small {
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+        }
+
+        .particle.medium {
+            width: 5px;
+            height: 5px;
+            background: rgba(200, 200, 200, 0.5);
+            box-shadow: 0 0 8px rgba(200, 200, 200, 0.4);
+        }
+
+        .particle.large {
+            width: 7px;
+            height: 7px;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .particle.grey {
+            background: rgba(150, 150, 150, 0.4);
+            box-shadow: 0 0 8px rgba(150, 150, 150, 0.3);
+        }
+
+        /* Gradient Blobs */
+        .bg-gradient {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .gradient-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+            top: -300px;
+            left: -300px;
+        }
+
+        .gradient-2 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            top: 50%;
+            right: -250px;
+        }
+
+        .gradient-3 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 70%);
+            bottom: -200px;
+            left: 20%;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: white;
+            color: black;
+            padding: 11px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 800px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+        }
+
+        /* Contact Cards */
+        .contact-section {
+            padding: 60px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffffff, #888888);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .contact-card:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(255,255,255,0.12);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2rem;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover .contact-icon {
+            background: rgba(255,255,255,0.12);
+            transform: scale(1.05);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .contact-card p {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .contact-link:hover {
+            background: #ffffff;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Form */
+        .form-section {
+            max-width: 900px;
+            margin: 0 auto 80px;
+        }
+
+        .form-container {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffffff, #888888);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .form-header p {
+            color: #888;
+            font-size: 1.05rem;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px 32px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .form-submit:hover {
+            background: #ffffff;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .alert.show {
+            display: flex;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10B981;
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
+        }
+
+        .faq-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item.active {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .faq-question {
+            padding: 24px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            color: #fff;
+        }
+
+        .faq-answer {
+            padding: 0 32px 24px 32px;
+            color: #888;
+            display: none;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Social Section */
+        .social-section {
+            background: rgba(10, 10, 10, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 48px 0;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .social-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .social-subtitle {
+            color: #888;
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #888;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: #ffffff;
+            color: #000;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 60px 0 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-copyright {
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto 80px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .form-container {
+                padding: 32px 24px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .form-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a1a;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Particles -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Gradient Blobs -->
+    <div class="bg-gradient gradient-1"></div>
+    <div class="bg-gradient gradient-2"></div>
+    <div class="bg-gradient gradient-3"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.php" class="logo">
+                    <img src="../images/732374ad-e8c2-4b4e-9af8-eb8364b297ae-removebg-preview.png" alt="OsintX">
+                    <span class="logo-text">OsintX</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="../pages/shop.html">Pricing</a></li>
+                </ul>
+                <a href="../pages/login.html" class="btn-primary">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">
+                <i class="fas fa-headset"></i>
+                <span>We're Here to Help</span>
+            </div>
+            <h1>Get in Touch</h1>
+            <p>Need assistance with our OSINT platform? Have questions about features or pricing? Our team is ready to help you with any inquiries.</p>
+        </div>
+    </section>
+
+    <!-- Contact Options -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Discord Support -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <h3>Discord Community</h3>
+                    <p>Join our active community for real-time support and discussions with our team and fellow users.</p>
+                    <a href="https://dsc.gg/osintx" target="_blank" class="contact-link">
+                        Join Discord
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Email Support -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Support</h3>
+                    <p>Send us an email and we'll respond within 24 hours. Perfect for detailed inquiries.</p>
+                    <a href="/cdn-cgi/l/email-protection#13606663637c6167537c607a7d676b3d7d7667" class="contact-link">
+                        <span class="__cf_email__" data-cfemail="0f7c7a7f7f607d7b4f607c66617b7721616a7b">[email&#160;protected]</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Telegram Channel -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram Updates</h3>
+                    <p>Stay updated with the latest news, features, and important announcements.</p>
+                    <a href="https://t.me/osintxnet" target="_blank" class="contact-link">
+                        Follow Updates
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="form-section">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Send Us a Message</h2>
+                        <p>Fill out the form below and we'll get back to you as soon as possible</p>
+                    </div>
+
+                    <div class="alert alert-success" id="successAlert">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Message sent successfully! We'll respond within 24 hours.</span>
+                    </div>
+
+                    <div class="alert alert-error" id="errorAlert">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="errorMessage">Something went wrong. Please try again.</span>
+                    </div>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-input" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" required placeholder="john@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <select id="subject" name="subject" class="form-select" required>
+                                <option value="">Select a subject...</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="billing">Billing & Payments</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="bug">Bug Report</option>
+                                <option value="partnership">Partnership Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea id="message" name="message" class="form-textarea" required placeholder="Describe your inquiry in detail..."></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit" id="submitBtn">
+                            <span id="btnText">Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is your average response time?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    We typically respond to all inquiries within 24 hours during business days. For urgent matters, our Discord community often provides faster responses from both our team and community members.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you offer phone support?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Currently, we provide support through email and Discord. This allows us to better document technical issues and provide detailed assistance. Enterprise customers may have access to priority support channels.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I report a bug or technical issue?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Use the contact form above and select "Bug Report". Include details about what you were trying to do, what happened, and any error messages. Screenshots are helpful!
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I request a feature?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    Absolutely! We love hearing from our users. Submit your feature request through the contact form or discuss it with the community on Discord.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How can I become a partner?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    We welcome partnership inquiries! Use the contact form and select "Partnership Inquiry". Include information about your organization and how you envision working together.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <div class="social-section">
+        <div class="container">
+            <h2 class="social-title">Follow Us</h2>
+            <p class="social-subtitle">Stay connected and get the latest updates</p>
+            <div class="social-links">
+                <a href="https://twitter.com/osintx" target="_blank" class="social-link" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://dsc.gg/osintx" target="_blank" class="social-link" title="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://t.me/osintxnet" target="_blank" class="social-link" title="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://github.com/osintx" target="_blank" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="../index.php">Home</a>
+                <a href="../pages/privacy.html">Privacy</a>
+                <a href="../pages/tos.html">Terms</a>
+                <a href="../pages/contact.html">Contact</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 OsintX.it - All rights reserved
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const sizes = ['small', 'medium', 'large'];
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                particle.classList.add(size);
+                
+                if (Math.random() > 0.5) {
+                    particle.classList.add('grey');
+                }
+                
+                particle.style.left = Math.random() * 100 + '%';
+                const duration = 15 + Math.random() * 25;
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                
+                const drift = (Math.random() - 0.5) * 200;
+                particle.style.setProperty('--drift', drift + 'px');
+                
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const successAlert = document.getElementById('successAlert');
+        const errorAlert = document.getElementById('errorAlert');
+        const errorMessage = document.getElementById('errorMessage');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<span class="loading"></span>';
+            
+            // Hide alerts
+            successAlert.classList.remove('show');
+            errorAlert.classList.remove('show');
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                // Simulate API call (replace with actual endpoint)
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Show success
+                successAlert.classList.add('show');
+                contactForm.reset();
+                
+                // Scroll to success message
+                successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+            } catch (error) {
+                // Show error
+                errorMessage.textContent = error.message || 'Something went wrong. Please try again.';
+                errorAlert.classList.add('show');
+                
+                // Scroll to error message
+                errorAlert.scrollIntoView({ behavior: 's

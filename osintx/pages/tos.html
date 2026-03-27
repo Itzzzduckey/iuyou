@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - OsintX.it</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Particles Background */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(var(--drift)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .particle.small {
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+        }
+
+        .particle.medium {
+            width: 5px;
+            height: 5px;
+            background: rgba(200, 200, 200, 0.5);
+            box-shadow: 0 0 8px rgba(200, 200, 200, 0.4);
+        }
+
+        .particle.large {
+            width: 7px;
+            height: 7px;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .particle.grey {
+            background: rgba(150, 150, 150, 0.4);
+            box-shadow: 0 0 8px rgba(150, 150, 150, 0.3);
+        }
+
+        /* Gradient Blobs */
+        .bg-gradient {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .gradient-1 {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+            top: -300px;
+            left: -300px;
+        }
+
+        .gradient-2 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            top: 50%;
+            right: -250px;
+        }
+
+        .gradient-3 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 70%);
+            bottom: -200px;
+            left: 20%;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: white;
+            color: black;
+            padding: 11px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+
+        /* ToS Content Section */
+        .tos-section {
+            padding: 80px 0;
+        }
+
+        .tos-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tos-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 48px 40px;
+            margin-bottom: 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tos-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ffffff, #888888);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tos-card:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(255,255,255,0.15);
+        }
+
+        .tos-card:hover::before {
+            opacity: 1;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: #fff;
+        }
+
+        .tos-card h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .tos-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .tos-card p {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .tos-card ul {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .tos-card li {
+            margin-bottom: 12px;
+            padding-left: 8px;
+        }
+
+        .tos-card a {
+            color: #60a5fa;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        .tos-card a:hover {
+            color: #93c5fd;
+        }
+
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .highlight-box p {
+            color: #60a5fa;
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 60px 0 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-copyright {
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .tos-card {
+                padding: 32px 24px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a1a;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Particles -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Gradient Blobs -->
+    <div class="bg-gradient gradient-1"></div>
+    <div class="bg-gradient gradient-2"></div>
+    <div class="bg-gradient gradient-3"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.php" class="logo">
+                    <img src="../images/732374ad-e8c2-4b4e-9af8-eb8364b297ae-removebg-preview.png" alt="OsintX">
+                    <span class="logo-text">OsintX</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                </ul>
+                <a href="../pages/shop.html" class="btn-primary">
+                    <i class="fas fa-external-link-alt"></i>
+                    Purchase
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">
+                <i class="fas fa-file-contract"></i>
+                <span>Legal Terms</span>
+            </div>
+            <h1>Terms of Service</h1>
+            <p>Last updated: November 2025. Please read these Terms carefully before using OsintX.</p>
+        </div>
+    </section>
+
+    <!-- ToS Content -->
+    <section class="tos-section">
+        <div class="container">
+            <div class="tos-content">
+
+                <!-- Acceptance of Terms -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-check-circle"></i></div>
+                        <h2>Acceptance of Terms</h2>
+                    </div>
+                    <p>
+                        By accessing or using OsintX's services, you agree to be bound by these Terms of Service. If you do not agree to these terms, you must immediately discontinue use of our platform. These terms constitute a legally binding agreement between you and OsintX.
+                    </p>
+                </div>
+
+                <!-- Purpose of the Platform -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-bullseye"></i></div>
+                        <h2>Purpose of the Platform</h2>
+                    </div>
+                    <p>
+                        OsintX provides access to OSINT (Open Source Intelligence) tools and data aggregation services for legitimate cybersecurity research, threat intelligence, and informational purposes only. Our platform serves as an interface to query multiple intelligence sources through a unified API.
+                    </p>
+                    <p>
+                        OsintX does not host, store, create, or sell any databases containing leaked or breached information. We act solely as a search interface that connects users to third-party OSINT data providers.
+                    </p>
+                </div>
+
+                <!-- User Responsibilities -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-user-shield"></i></div>
+                        <h2>User Responsibilities</h2>
+                    </div>
+                    <p>By using OsintX, you agree to:</p>
+                    <ul>
+                        <li>Use the platform only for lawful purposes and in compliance with all applicable local, national, and international laws and regulations</li>
+                        <li>Not use the service for harassment, stalking, threatening, or any form of illegal activity</li>
+                        <li>Not attempt to bypass, circumvent, or exploit the API or platform security measures</li>
+                        <li>Keep your API key confidential and not share it with unauthorized parties</li>
+                        <li>Not use automated systems to overload or abuse the service infrastructure</li>
+                        <li>Accept full responsibility for all activities conducted under your account</li>
+                    </ul>
+                    <p>
+                        Users who violate these responsibilities may have their access terminated immediately without refund.
+                    </p>
+                </div>
+
+                <!-- Subscription & Billing -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-receipt"></i></div>
+                        <h2>Subscription & Billing</h2>
+                    </div>
+                    <p>
+                        OsintX offers subscription plans with clearly defined pricing. All payments are processed securely through our payment partners. By subscribing, you acknowledge that:
+                    </p>
+                    <ul>
+                        <li>All payments are final and non-refundable under any circumstances</li>
+                        <li>Monthly subscriptions renew automatically unless cancelled before the renewal date</li>
+                        <li>Lifetime subscriptions grant permanent access as long as the service remains operational</li>
+                        <li>OsintX reserves the right to modify pricing for new subscriptions with advance notice</li>
+                        <li>Existing subscriptions will maintain their original pricing terms</li>
+                    </ul>
+                    <p>
+                        OsintX may suspend or terminate accounts that violate these Terms without providing refunds for unused subscription periods.
+                    </p>
+                </div>
+
+                <!-- API Usage Rules -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-plug"></i></div>
+                        <h2>API Usage Rules</h2>
+                    </div>
+                    <p>
+                        Access to the OsintX API is subject to fair use policies:
+                    </p>
+                    <ul>
+                        <li>API keys are personal, non-transferable, and tied to individual user accounts</li>
+                        <li>Unlimited usage plans are subject to reasonable fair-use limitations to ensure service quality for all users</li>
+                        <li>Abuse, including excessive automated queries, infinite loops, or deliberate service disruption, will result in immediate account suspension</li>
+                        <li>Rate limiting may be applied to prevent system overload</li>
+                        <li>Users may not resell, redistribute, or commercialize API access to third parties</li>
+                    </ul>
+                    <p>
+                        OsintX reserves the right to define and enforce fair use policies to maintain service stability and performance.
+                    </p>
+                </div>
+
+                <!-- Third-Party OSINT Services -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-server"></i></div>
+                        <h2>Third-Party OSINT Services</h2>
+                    </div>
+                    <p>
+                        OsintX operates as an aggregation platform, connecting users to external OSINT data providers including Snusbase, IntelX, LeakOsint, LeakSight, and other intelligence sources. Important disclaimers:
+                    </p>
+                    <ul>
+                        <li>OsintX does not control, verify, or guarantee the accuracy, completeness, or reliability of data provided by third-party sources</li>
+                        <li>Data availability and quality are dependent on external providers and may vary</li>
+                        <li>OsintX is not responsible for the content, policies, or practices of third-party OSINT services</li>
+                        <li>Service interruptions or data unavailability from external providers are beyond our control</li>
+                    </ul>
+                </div>
+
+                <!-- Limitation of Liability -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <h2>Limitation of Liability</h2>
+                    </div>
+                    <p>
+                        OsintX provides services "as is" without warranties of any kind. To the fullest extent permitted by law:
+                    </p>
+                    <ul>
+                        <li>OsintX is not responsible for how users utilize the information obtained through our platform</li>
+                        <li>Users assume all risks associated with using OSINT data and are solely responsible for their actions</li>
+                        <li>OsintX will not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from platform use</li>
+                        <li>We are not responsible for data accuracy, service interruptions, or financial losses</li>
+                        <li>OsintX's total liability shall not exceed the amount paid for your current subscription period</li>
+                    </ul>
+                </div>
+
+                <!-- Account Termination -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-ban"></i></div>
+                        <h2>Account Termination</h2>
+                    </div>
+                    <p>
+                        OsintX reserves the right to suspend or permanently terminate user accounts at our sole discretion if we determine that:
+                    </p>
+                    <ul>
+                        <li>The account is being used for illegal activities or malicious purposes</li>
+                        <li>There has been a violation of these Terms of Service</li>
+                        <li>The user has engaged in fraudulent activity or payment disputes</li>
+                        <li>The account poses a security risk to our platform or other users</li>
+                        <li>Abuse or excessive misuse of service resources has occurred</li>
+                    </ul>
+                    <p>
+                        Terminated accounts are not eligible for refunds. Users may appeal termination decisions by contacting our support team.
+                    </p>
+                </div>
+
+                <!-- Changes to Terms -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h2>Changes to Terms</h2>
+                    </div>
+                    <p>
+                        OsintX may modify these Terms of Service at any time. Significant changes will be communicated through our platform or via email. Continued use of the service after changes are posted constitutes acceptance of the updated terms.
+                    </p>
+                </div>
+
+                <!-- Governing Law -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-gavel"></i></div>
+                        <h2>Governing Law</h2>
+                    </div>
+                    <p>
+                        These Terms shall be governed by and construed in accordance with applicable international laws. Any disputes arising from these terms or use of the service shall be resolved through binding arbitration.
+                    </p>
+                </div>
+
+                <!-- Contact -->
+                <div class="tos-card">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-envelope"></i></div>
+                        <h2>Contact</h2>
+                    </div>
+                    <p>For questions, concerns, or clarifications regarding these Terms of Service, please contact us through:</p>
+                    <ul>
+                        <li>Discord: <a href="https://discord.gg/OsintX">discord.gg/OsintX</a></li>
+                        <li>Contact Form: Available on our website</li>
+                    </ul>
+                    <p>
+                        Our support team is available to assist with any questions about your rights and obligations under these Terms.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="../index.php">Home</a>
+                <a href="../pages/privacy.html">Privacy</a>
+                <a href="../pages/tos.html">Terms</a>
+                <a href="../pages/contact.html">Contact</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 OsintX.it - All rights reserved
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const sizes = ['small', 'medium', 'large'];
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                particle.classList.add(size);
+                
+                if (Math.random() > 0.5) {
+                    particle.classList.add('grey');
+                }
+                
+                particle.style.left = Math.random() * 100 + '%';
+                const duration = 15 + Math.random() * 25;
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                
+                const drift = (Math.random() - 0.5) * 200;
+                particle.style.setProperty('--drift', drift + 'px');
+                
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+    </script>
+</body>
+</html>
